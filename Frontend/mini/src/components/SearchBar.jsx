@@ -3,7 +3,8 @@ import { useState } from 'react'
 export default function SearchBar({ onSearch, onClear, loading }) {
   const [type, setType] = useState('title')
   const [query, setQuery] = useState('')
-
+  
+  // function to handle form submission
   function submit(e) {
     e.preventDefault()
     onSearch({ type, query })
