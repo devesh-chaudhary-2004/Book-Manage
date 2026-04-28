@@ -5,7 +5,7 @@ export default function Header() {
         <div className="flex items-center justify-between gap-4">
           <div className="min-w-0">
             <h1 className="text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">
-              Book Management System
+              Welcome to Book Management System
             </h1>
           </div>
           <div className="hidden sm:block">
