@@ -1,8 +1,7 @@
 import { useMemo, useState } from 'react'
 
 const emptyErrors = { title: '', author: '', price: '', description: '' }
-  const [values, setValues] = useState(initial)
-  const [errors, setErrors] = useState(emptyErrors)
+
 export default function BookForm({
   initialValues,
   onSubmit,
@@ -11,6 +10,7 @@ export default function BookForm({
   busy = false,
   resetAfterSubmit = false,
 }) {
+  // initial values for the form fields, using initialValues prop if provided
   const initial = useMemo(
     () => ({
       title: initialValues?.title ?? '',
@@ -24,7 +24,17 @@ export default function BookForm({
     [initialValues],
   )
 
- function validate() {
+  const [values, setValues] = useState(initial)
+  const [errors, setErrors] = useState(emptyErrors)
+
+  // function to update form field values and clear corresponding error message
+  function setField(name, value) {
+    setValues((v) => ({ ...v, [name]: value }))
+    setErrors((e) => ({ ...e, [name]: '' }))
+  }
+
+  // function to validate form fields and set error messages if validation fails
+  function validate() {
     const next = { ...emptyErrors }
 
     if (!values.title.trim()) next.title = 'Title is required.'
@@ -39,13 +49,6 @@ export default function BookForm({
     setErrors(next)
     return Object.values(next).every((msg) => !msg)
   }
-
-  function setField(name, value) {
-    setValues((v) => ({ ...v, [name]: value }))
-    setErrors((e) => ({ ...e, [name]: '' }))
-  }
-
- 
 
   async function submit(e) {
     e.preventDefault()
