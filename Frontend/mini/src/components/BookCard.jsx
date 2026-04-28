@@ -26,6 +26,7 @@ export default function BookCard({ book, onEdit, onDelete, deleting }) {
         >
           Edit
         </button>
+        // disabling delete button when deleting is true
         <button
           type="button"
           disabled={deleting}
