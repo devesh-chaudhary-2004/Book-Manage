@@ -1,6 +1,6 @@
 export default function Modal({ title, open, onClose, children }) {
   if (!open) return null
-
+// this is the modal page
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <button
