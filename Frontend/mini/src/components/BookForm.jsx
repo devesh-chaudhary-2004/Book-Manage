@@ -24,14 +24,7 @@ export default function BookForm({
     [initialValues],
   )
 
-
-
-  function setField(name, value) {
-    setValues((v) => ({ ...v, [name]: value }))
-    setErrors((e) => ({ ...e, [name]: '' }))
-  }
-
-  function validate() {
+ function validate() {
     const next = { ...emptyErrors }
 
     if (!values.title.trim()) next.title = 'Title is required.'
@@ -46,6 +39,13 @@ export default function BookForm({
     setErrors(next)
     return Object.values(next).every((msg) => !msg)
   }
+
+  function setField(name, value) {
+    setValues((v) => ({ ...v, [name]: value }))
+    setErrors((e) => ({ ...e, [name]: '' }))
+  }
+
+ 
 
   async function submit(e) {
     e.preventDefault()
