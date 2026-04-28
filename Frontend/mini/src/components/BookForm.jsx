@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 
 const emptyErrors = { title: '', author: '', price: '', description: '' }
-
+  const [values, setValues] = useState(initial)
+  const [errors, setErrors] = useState(emptyErrors)
 export default function BookForm({
   initialValues,
   onSubmit,
@@ -23,8 +24,7 @@ export default function BookForm({
     [initialValues],
   )
 
-  const [values, setValues] = useState(initial)
-  const [errors, setErrors] = useState(emptyErrors)
+
 
   function setField(name, value) {
     setValues((v) => ({ ...v, [name]: value }))
