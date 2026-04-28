@@ -13,7 +13,7 @@ public class BookService {
     public Book addBook(Book book) {
         book.setId(UUID.randomUUID().toString());
         books.add(book);
-        return book;
+         return book;
     }
 
     // Get All Books
@@ -35,7 +35,7 @@ public class BookService {
     }
 
     // Search by Author
-    public List<Book> searchByAuthor(String author) {
+     public List<Book> searchByAuthor(String author) {
         return books.stream()
                 .filter(book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()))
                 .collect(Collectors.toList());
@@ -43,7 +43,7 @@ public class BookService {
 
     public Book updateBook(String id, Book updatedBook) {
         return books.stream()
-                .filter(book -> book.getId().equals(id))
+                .filter(book ->     book.getId().equals(id))
                 .findFirst()
                 .map(book -> {
                     book.setTitle(updatedBook.getTitle());
